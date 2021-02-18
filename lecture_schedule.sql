@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th2 16, 2021 lúc 02:56 AM
+-- Thời gian đã tạo: Th2 18, 2021 lúc 11:00 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.4.11
 
@@ -943,6 +943,7 @@ CREATE TABLE `chambais` (
   `gio_khoahoc` int(11) NOT NULL,
   `bat_dau` date NOT NULL,
   `ket_thuc` date NOT NULL,
+  `hoan_thanh` date DEFAULT NULL,
   `ghichu` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -950,8 +951,10 @@ CREATE TABLE `chambais` (
 -- Đang đổ dữ liệu cho bảng `chambais`
 --
 
-INSERT INTO `chambais` (`id`, `id_giangvien`, `lop`, `hoc_phan`, `giua_hoc_phan`, `cdtn`, `so_bai`, `gio_giang`, `gio_khoahoc`, `bat_dau`, `ket_thuc`, `ghichu`) VALUES
-(18, 1, 'dđ', 0, 0, 1, 4, 3, 5, '2021-02-17', '2021-02-16', 'aaa111');
+INSERT INTO `chambais` (`id`, `id_giangvien`, `lop`, `hoc_phan`, `giua_hoc_phan`, `cdtn`, `so_bai`, `gio_giang`, `gio_khoahoc`, `bat_dau`, `ket_thuc`, `hoan_thanh`, `ghichu`) VALUES
+(18, 1, 'dđ', 0, 0, 1, 4, 3, 5, '2021-02-17', '2021-02-16', NULL, 'aaa111'),
+(20, 5, 'dđ', 1, 0, 0, 4, 4, 0, '2021-02-27', '2021-02-06', '2021-02-18', NULL),
+(21, 11, 'dđ', 0, 1, 0, 6, 4, 6, '2021-02-06', '2021-02-13', '2021-02-20', NULL);
 
 -- --------------------------------------------------------
 
@@ -968,6 +971,7 @@ CREATE TABLE `congtacs` (
   `gio_khoahoc` int(11) NOT NULL,
   `bat_dau` date NOT NULL,
   `ket_thuc` date NOT NULL,
+  `hoan_thanh` date DEFAULT NULL,
   `ghichu` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -975,9 +979,9 @@ CREATE TABLE `congtacs` (
 -- Đang đổ dữ liệu cho bảng `congtacs`
 --
 
-INSERT INTO `congtacs` (`id`, `id_giangvien`, `ten`, `dia_diem`, `gio_giang`, `gio_khoahoc`, `bat_dau`, `ket_thuc`, `ghichu`) VALUES
-(16, 1, 'AA', '', 222, 0, '2020-08-15', '2021-02-16', 'qqqq'),
-(17, 1, 'AA', '', 222, 0, '2020-08-15', '0000-00-00', 'qqqq');
+INSERT INTO `congtacs` (`id`, `id_giangvien`, `ten`, `dia_diem`, `gio_giang`, `gio_khoahoc`, `bat_dau`, `ket_thuc`, `hoan_thanh`, `ghichu`) VALUES
+(16, 1, 'AA', '', 222, 0, '2020-08-15', '2021-02-16', NULL, 'qqqq'),
+(17, 1, 'AA', '', 222, 0, '2020-08-15', '0000-00-00', NULL, 'qqqq');
 
 -- --------------------------------------------------------
 
@@ -993,6 +997,7 @@ CREATE TABLE `dangs` (
   `tham_gia` varchar(500) NOT NULL,
   `bat_dau` date NOT NULL,
   `ket_thuc` date NOT NULL,
+  `hoan_thanh` date DEFAULT NULL,
   `ghichu` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1000,9 +1005,9 @@ CREATE TABLE `dangs` (
 -- Đang đổ dữ liệu cho bảng `dangs`
 --
 
-INSERT INTO `dangs` (`id`, `ten`, `dia_diem`, `chu_tri`, `tham_gia`, `bat_dau`, `ket_thuc`, `ghichu`) VALUES
-(17, 'Bùi Văn C', 'aa', '[1]', '[2,3]', '2021-02-05', '2021-02-16', 'aaa111'),
-(18, 'Bùi Văn C', 'aa', '[1]', '[2]', '2021-02-05', '2021-03-05', 'aaa111');
+INSERT INTO `dangs` (`id`, `ten`, `dia_diem`, `chu_tri`, `tham_gia`, `bat_dau`, `ket_thuc`, `hoan_thanh`, `ghichu`) VALUES
+(17, 'Bùi Văn C', 'aa', '[1]', '[2,3]', '2021-02-05', '2021-02-16', '2021-02-26', 'aaa111'),
+(18, 'Bùi Văn C', 'aa', '[1]', '[2]', '2021-02-05', '2021-03-05', NULL, 'aaa111');
 
 -- --------------------------------------------------------
 
@@ -1021,6 +1026,7 @@ CREATE TABLE `daygiois` (
   `gio_khoahoc` int(11) NOT NULL,
   `bat_dau` date NOT NULL,
   `ket_thuc` date NOT NULL,
+  `hoan_thanh` date DEFAULT NULL,
   `ghichu` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1028,9 +1034,9 @@ CREATE TABLE `daygiois` (
 -- Đang đổ dữ liệu cho bảng `daygiois`
 --
 
-INSERT INTO `daygiois` (`id`, `id_giangvien`, `ten`, `cap_bo`, `cap_hoc_vien`, `cap_khoa`, `gio_giang`, `gio_khoahoc`, `bat_dau`, `ket_thuc`, `ghichu`) VALUES
-(14, 1, 'dđ', 1, 0, 0, 6, 4, '2021-02-08', '2021-02-16', 'aa'),
-(15, 1, 'dđ', 1, 0, 0, 6, 4, '2021-02-08', '2021-02-18', 'aa');
+INSERT INTO `daygiois` (`id`, `id_giangvien`, `ten`, `cap_bo`, `cap_hoc_vien`, `cap_khoa`, `gio_giang`, `gio_khoahoc`, `bat_dau`, `ket_thuc`, `hoan_thanh`, `ghichu`) VALUES
+(14, 1, 'dđ', 1, 0, 0, 6, 4, '2021-02-08', '2021-02-16', NULL, 'aa'),
+(15, 1, 'dđ', 1, 0, 0, 6, 4, '2021-02-08', '2021-02-18', NULL, 'aa');
 
 -- --------------------------------------------------------
 
@@ -1041,8 +1047,8 @@ INSERT INTO `daygiois` (`id`, `id_giangvien`, `ten`, `cap_bo`, `cap_hoc_vien`, `
 CREATE TABLE `giangviens` (
   `id` int(11) NOT NULL,
   `ten` varchar(500) NOT NULL,
-  `chucvu` varchar(500) DEFAULT NULL,
-  `hesoluong` float DEFAULT NULL,
+  `congviec` varchar(500) DEFAULT NULL,
+  `capbac` varchar(500) DEFAULT NULL,
   `ma_giangvien` varchar(500) NOT NULL,
   `bai_giang` varchar(500) DEFAULT NULL,
   `diachi` varchar(500) DEFAULT NULL,
@@ -1055,17 +1061,17 @@ CREATE TABLE `giangviens` (
 -- Đang đổ dữ liệu cho bảng `giangviens`
 --
 
-INSERT INTO `giangviens` (`id`, `ten`, `chucvu`, `hesoluong`, `ma_giangvien`, `bai_giang`, `diachi`, `chucdanh`, `trinhdo`, `cothegiang`) VALUES
-(1, 'Trần Tuấn Tú', 'Trưởng Khoaa', 5, 'MS01', 'TS, Bắt', 'Q.Hà Đông, Hà Nội', 'GVC', 'TS', 1),
-(2, 'Lê Thái Sơn', 'Phó Khoa', 3, 'MS02', 'NULL', 'Hà Nội', 'GVC', 'TS', 1),
-(3, 'Lê Lương Sơn', 'NULL', 0, 'MS03', 'NULL', 'NULL', 'GVC', 'TS\r\n', 1),
-(4, 'Trần Đức Thuận', 'NULL', 0, 'MS04', 'NULL', 'NULL', 'GVC', 'TS', 1),
-(5, 'Trần Văn Tuyền', 'NULL', 0, 'MS05', 'NULL', 'NULL', 'GVC', 'TS', 1),
-(6, 'Hoàng Tuấn Anh', 'NULL', 0, 'MS06', 'NULL', 'NULL', 'GVC', 'TS', 1),
-(7, 'Trần Thư Anh', 'NULL', 0, 'MS07', 'NULL', 'NULL', 'GVC', 'TS', 1),
-(8, 'Lê Thị Thùy Linh', 'NULL', 0, 'MS08', 'NULL', 'NULL', 'GVC', 'ThS', 1),
-(9, 'Nguyễn Thiên Quyền ', 'NULL', 0, 'MS09', 'NULL', 'NULL', 'GV', 'ThS', 1),
-(10, 'Vương Thăng Long', 'NULL', 0, 'MS10', 'NULL', 'NULL', 'GV', 'TS', 1),
+INSERT INTO `giangviens` (`id`, `ten`, `congviec`, `capbac`, `ma_giangvien`, `bai_giang`, `diachi`, `chucdanh`, `trinhdo`, `cothegiang`) VALUES
+(1, 'Trần Tuấn Tú', 'Trưởng Khoaa', '5', 'MS01', 'TS, Bắt', 'Q.Hà Đông, Hà Nội', 'GVC', 'TS', 1),
+(2, 'Lê Thái Sơn', 'Phó Khoa', '3', 'MS02', 'NULL', 'Hà Nội', 'GVC', 'TS', 1),
+(3, 'Lê Lương Sơn', 'NULL', '0', 'MS03', 'NULL', 'NULL', 'GVC', 'TS\r\n', 1),
+(4, 'Trần Đức Thuận', 'NULL', '0', 'MS04', 'NULL', 'NULL', 'GVC', 'TS', 1),
+(5, 'Trần Văn Tuyền', 'NULL', '0', 'MS05', 'NULL', 'NULL', 'GVC', 'TS', 1),
+(6, 'Hoàng Tuấn Anh', 'NULL', '0', 'MS06', 'NULL', 'NULL', 'GVC', 'TS', 1),
+(7, 'Trần Thư Anh', 'NULL', '0', 'MS07', 'NULL', 'NULL', 'GVC', 'TS', 1),
+(8, 'Lê Thị Thùy Linh', 'NULL', '0', 'MS08', 'NULL', 'NULL', 'GVC', 'ThS', 1),
+(9, 'Nguyễn Thiên Quyền ', 'NULL', '0', 'MS09', 'NULL', 'NULL', 'GV', 'ThS', 1),
+(10, 'Vương Thăng Long', 'NULL', '0', 'MS10', 'NULL', 'NULL', 'GV', 'TS', 1),
 (11, 'Vũ Hữu Huân ', NULL, NULL, 'MS11', NULL, NULL, 'GVC', 'TS', 1),
 (12, 'Nguyễn Trọng Hưng', NULL, NULL, 'MS12', NULL, NULL, 'GV', 'ThS', 1),
 (13, 'Nguyễn Kim Long', NULL, NULL, 'MS13', NULL, NULL, 'GV', 'ThS', 1),
@@ -1108,6 +1114,7 @@ CREATE TABLE `hdkh` (
   `hoc_vien` varchar(500) NOT NULL,
   `bat_dau` date NOT NULL,
   `ket_thuc` date NOT NULL,
+  `hoan_thanh` date DEFAULT NULL,
   `khoa` varchar(500) NOT NULL,
   `gio_giang` int(11) NOT NULL,
   `gio_khoahoc` int(11) NOT NULL,
@@ -1118,9 +1125,12 @@ CREATE TABLE `hdkh` (
 -- Đang đổ dữ liệu cho bảng `hdkh`
 --
 
-INSERT INTO `hdkh` (`id`, `id_giangvien`, `sinhvien_nc`, `khoa_luan`, `luan_an`, `luan_van`, `hoc_vien`, `bat_dau`, `ket_thuc`, `khoa`, `gio_giang`, `gio_khoahoc`, `ghichu`) VALUES
-(6, 1, 0, 1, 0, 0, 'AAAAyyyy', '0000-00-00', '0000-00-00', '34', 3, 4, 'aaa1111111'),
-(8, 1, 1, 0, 0, 0, 'AAAAyyyy', '2021-02-15', '2021-02-15', '34', 3, 0, 'aaa1111111');
+INSERT INTO `hdkh` (`id`, `id_giangvien`, `sinhvien_nc`, `khoa_luan`, `luan_an`, `luan_van`, `hoc_vien`, `bat_dau`, `ket_thuc`, `hoan_thanh`, `khoa`, `gio_giang`, `gio_khoahoc`, `ghichu`) VALUES
+(6, 1, 0, 1, 0, 0, 'AAAAyyyy', '0000-00-00', '0000-00-00', NULL, '34', 3, 4, 'aaa1111111'),
+(8, 1, 1, 0, 0, 0, 'AAAAyyyy', '2021-02-15', '2021-02-15', NULL, '34', 3, 0, 'aaa1111111'),
+(11, 3, 1, 0, 0, 0, 'AAAAyyyy', '2021-02-05', '2021-02-20', '2021-02-18', '34', 3, 4, NULL),
+(12, 5, 1, 0, 0, 0, 'AAAAyyyyr', '2021-03-04', '2021-02-06', '2021-02-18', '34', 3, 5, NULL),
+(13, 6, 1, 0, 0, 0, 'AAAAyyyyttt', '2021-02-26', '2021-02-06', NULL, '34', 2, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -1380,8 +1390,7 @@ CREATE TABLE `hops` (
   `id_giangvien` int(11) NOT NULL,
   `ten` varchar(500) NOT NULL,
   `dia_diem` varchar(500) NOT NULL,
-  `batdau` date NOT NULL,
-  `ketthuc` date NOT NULL,
+  `thoigian` datetime NOT NULL,
   `giogiang` int(11) NOT NULL,
   `giokhoahoc` int(11) NOT NULL,
   `ghichu` varchar(500) DEFAULT NULL
@@ -1391,14 +1400,15 @@ CREATE TABLE `hops` (
 -- Đang đổ dữ liệu cho bảng `hops`
 --
 
-INSERT INTO `hops` (`id`, `id_giangvien`, `ten`, `dia_diem`, `batdau`, `ketthuc`, `giogiang`, `giokhoahoc`, `ghichu`) VALUES
-(1, 1, 'Họp 01', 'ssss', '2020-10-15', '2021-02-16', 9, 0, 'Ghi Chú Họp 1'),
-(7, 4, 'Bùi Văn C', '', '2020-12-02', '2021-02-16', 11, 0, 'eeee'),
-(8, 5, 'Công tác Mư', '', '2020-12-30', '0000-00-00', 333, 0, '2222'),
-(10, 3, 'Bùi Văn C', '', '2021-01-28', '0000-00-00', 2, 0, 'eeeeee'),
-(13, 7, 'Công tác Mư', '', '2021-01-30', '0000-00-00', 4444, 0, 'Chấm Khóa Luận 01'),
-(16, 4, 'Test 01', '', '2021-01-23', '0000-00-00', 555, 0, 'qqqq'),
-(17, 4, 'Công tác Mư', '', '2021-01-29', '0000-00-00', 55, 0, 'a1111111');
+INSERT INTO `hops` (`id`, `id_giangvien`, `ten`, `dia_diem`, `thoigian`, `giogiang`, `giokhoahoc`, `ghichu`) VALUES
+(1, 1, 'Họp 01', 'ssss', '2020-10-15 00:00:00', 9, 0, 'Ghi Chú Họp 1'),
+(7, 4, 'Bùi Văn C', '', '2020-12-02 00:00:00', 11, 0, 'eeee'),
+(8, 5, 'Công tác Mư', '', '2020-12-30 00:00:00', 333, 0, '2222'),
+(10, 3, 'Bùi Văn C', '', '2021-01-28 00:00:00', 2, 0, 'eeeeee'),
+(13, 7, 'Công tác Mư', '', '2021-01-30 00:00:00', 4444, 0, 'Chấm Khóa Luận 01'),
+(16, 4, 'Test 01', '', '2021-01-23 00:00:00', 555, 0, 'qqqq'),
+(17, 4, 'Công tác Mư', '', '2021-01-29 00:00:00', 55, 0, 'a1111111'),
+(20, 16, 'Test 01111', 'aallll', '2021-02-11 00:00:00', 33, 2, 'aaa111');
 
 -- --------------------------------------------------------
 
@@ -1431,7 +1441,8 @@ INSERT INTO `loai_nckhs` (`id`, `ten`) VALUES
 (13, 'Bài báo '),
 (14, 'Tham Luận '),
 (15, 'Sáng Kiến'),
-(16, 'Cải Tiến\r\n');
+(16, 'Cải Tiến\r\n'),
+(17, 'Tài Liệu - Đề Cương Học Phần');
 
 -- --------------------------------------------------------
 
@@ -1452,7 +1463,7 @@ CREATE TABLE `lops` (
 --
 
 INSERT INTO `lops` (`id`, `malop`, `tenlop`, `quymo`, `he`) VALUES
-(139, '31LAO_ANDT', '31LAO ANĐT', 1.2, 1),
+(139, '31LAO_ANDT', '31LAO ANĐT', 1.5, 1),
 (140, '32LAO BVNB', 'Lớp 32LAO BVNB', 1, 1),
 (141, '49B ĐT', 'Lớp 49B Điều Tra', 1, 1),
 (142, '50A PG', 'Lớp 50A Phản Gián', 1, 1),
@@ -1554,7 +1565,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2020_08_13_064335_create_table_nckhs_table', 3),
 (9, '2020_08_13_090836_laratrust_setup_tables', 4),
 (10, '2020_08_13_115058_add_attribute_users_table', 5),
-(11, '2020_08_15_080259_create_events_table', 6);
+(11, '2020_08_15_080259_create_events_table', 6),
+(12, '2021_02_16_155557_create_settings_table', 7);
 
 -- --------------------------------------------------------
 
@@ -1575,21 +1587,21 @@ CREATE TABLE `nckhs` (
   `batdau` date NOT NULL,
   `ketthuc` date NOT NULL,
   `sotrang` int(11) NOT NULL,
-  `ghichu` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `songuoi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `nckhs`
 --
 
-INSERT INTO `nckhs` (`id`, `ten`, `capbo`, `thamkhao`, `sangkien`, `bao`, `theloai`, `chubien`, `thamgia`, `batdau`, `ketthuc`, `sotrang`, `ghichu`) VALUES
-(34, 'A', 1, 0, 0, 0, 3, '[2]', '[6,7]', '2021-01-06', '2021-01-27', 22, 'AAAAaaaa'),
-(35, 'BBbbbb', 0, 1, 0, 0, 5, '[1]', '[7,6,2]', '2021-01-08', '2021-01-30', 33, 'vbbbb'),
-(36, 'cccc', 0, 0, 0, 1, 13, '[2]', '[1,3,4]', '2021-01-14', '2021-01-30', 44, 'dd'),
-(38, 'cccc', 0, 0, 1, 0, 16, '[1]', '[2]', '2021-01-12', '2021-01-23', 3, 'ee'),
-(39, 'Bùi Văn C', 1, 0, 0, 0, 4, '[1,2]', '[3,4]', '2021-02-12', '2021-02-13', 2, 'Chấm Khóa Luận 01'),
-(40, 'Công tác Mư', 1, 0, 0, 0, 1, '[1]', '[3,4]', '2021-02-04', '2021-02-12', 2, 'a1111111'),
-(41, 'Công tác Mư', 0, 1, 0, 0, 4, '[1]', '[2,3]', '2021-02-03', '2021-02-27', 2, NULL);
+INSERT INTO `nckhs` (`id`, `ten`, `capbo`, `thamkhao`, `sangkien`, `bao`, `theloai`, `chubien`, `thamgia`, `batdau`, `ketthuc`, `sotrang`, `songuoi`) VALUES
+(34, 'A', 1, 0, 0, 0, 3, '[2]', '[6,7]', '2021-01-06', '2021-01-27', 22, 3),
+(35, 'BBbbbb', 0, 1, 0, 0, 5, '[1]', '[7,6,2]', '2021-01-08', '2021-01-30', 33, 4),
+(36, 'cccc', 0, 0, 0, 1, 13, '[2]', '[1,3,4]', '2021-01-14', '2021-01-30', 44, 4),
+(38, 'cccc', 0, 0, 1, 0, 16, '[1]', '[2]', '2021-01-12', '2021-01-23', 3, 2),
+(39, 'Bùi Văn C', 1, 0, 0, 0, 4, '[1,2]', '[3,4]', '2021-02-12', '2021-02-13', 2, 4),
+(40, 'Công tác Mư', 1, 0, 0, 0, 1, '[1]', '[3,4]', '2021-02-04', '2021-02-12', 2, 3),
+(41, 'Công tác Mư', 0, 1, 0, 0, 4, '[1]', '[2,3]', '2021-02-03', '2021-02-27', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -6246,11 +6258,11 @@ INSERT INTO `tiets` (`id`, `id_lop`, `id_hocphan`, `id_giangvien`, `id_bai`, `th
 CREATE TABLE `tuans` (
   `id` int(11) NOT NULL,
   `thoi_gian` datetime NOT NULL,
-  `gio` varchar(500) NOT NULL,
   `dia_diem` varchar(500) NOT NULL,
   `noi_dung` varchar(500) NOT NULL,
   `thanh_phan` varchar(500) NOT NULL,
-  `truc_ban` varchar(500) NOT NULL,
+  `truc_ban` int(11) NOT NULL,
+  `truc_gv` int(11) NOT NULL,
   `ghi_chu` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -6258,14 +6270,15 @@ CREATE TABLE `tuans` (
 -- Đang đổ dữ liệu cho bảng `tuans`
 --
 
-INSERT INTO `tuans` (`id`, `thoi_gian`, `gio`, `dia_diem`, `noi_dung`, `thanh_phan`, `truc_ban`, `ghi_chu`) VALUES
-(2, '2021-02-13 02:45:00', '9:00AM', 'Nhà 6o', 'Họp D', 'ABCDD', 'AAAABB', 'FGGGFF'),
-(3, '2021-02-17 12:47:00', '9:00AM', 'Nhà 6u', 'Họp Dy', 'ABCDD', 'AAAABB', 'FGGGFF'),
-(4, '2021-02-16 12:47:00', '9:00AM', 'Nhà 6', 'Họp D', 'ABCDD', 'AAAABB', 'FGGGFF'),
-(5, '2021-02-18 12:47:49', '9:00AM', 'Nhà 6', 'Họp D', 'ABCDD', 'AAAABB', 'FGGGFF'),
-(6, '2021-01-29 12:47:49', '9:00AM', 'Nhà 6', 'Họp D', 'ABCDD', 'AAAABB', 'FGGGFF'),
-(7, '2021-02-15 14:30:24', '9:00AM', 'Nhà 6', 'Họp D', 'ABCDD', 'AAAABB', 'FGGGFF'),
-(8, '2021-02-01 13:35:23', '9:00AM', 'Nhà 6', 'Họp D', 'ABCDD', 'AAAABB', 'FGGGFF');
+INSERT INTO `tuans` (`id`, `thoi_gian`, `dia_diem`, `noi_dung`, `thanh_phan`, `truc_ban`, `truc_gv`, `ghi_chu`) VALUES
+(2, '2021-02-13 02:45:00', 'Nhà 6o', 'Họp D', 'ABCDD', 1, 0, 'FGGGFF'),
+(3, '2021-02-17 12:47:00', 'Nhà 6u', 'Họp Dy', 'ABCDD', 1, 0, 'FGGGFF'),
+(4, '2021-02-16 12:47:00', 'Nhà 6', 'Họp D', 'ABCDD', 1, 0, 'FGGGFF'),
+(5, '2021-02-18 12:47:49', 'Nhà 6', 'Họp D', 'ABCDD', 1, 0, 'FGGGFF'),
+(6, '2021-01-29 12:47:49', 'Nhà 6', 'Họp D', 'ABCDD', 1, 0, 'FGGGFF'),
+(7, '2021-02-15 14:30:24', 'Nhà 6', 'Họp D', 'ABCDD', 1, 0, 'FGGGFF'),
+(8, '2021-02-01 13:35:23', 'Nhà 6', 'Họp D', 'ABCDD', 1, 0, 'FGGGFF'),
+(12, '2021-02-19 04:58:00', 'Nhà 7', 'ggggeeee', 'aaannnnnnnnnnnnnnn', 2, 19, NULL);
 
 -- --------------------------------------------------------
 
@@ -6309,6 +6322,7 @@ CREATE TABLE `vanbans` (
   `tham_gia` varchar(500) DEFAULT NULL,
   `thoigian_nhan` date NOT NULL,
   `thoigian_den` date NOT NULL,
+  `hoan_thanh` date DEFAULT NULL,
   `noi_dung` varchar(500) NOT NULL,
   `ghichu` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -6317,12 +6331,12 @@ CREATE TABLE `vanbans` (
 -- Đang đổ dữ liệu cho bảng `vanbans`
 --
 
-INSERT INTO `vanbans` (`id`, `lanhdao`, `chu_tri`, `tham_gia`, `thoigian_nhan`, `thoigian_den`, `noi_dung`, `ghichu`) VALUES
-(1, 'Bùi Văn A', '[4]', '[1,2]', '2020-10-15', '2021-02-16', 'Văn Bản 01', 'Ghi Chú Văn Barn 01'),
-(5, 'Bùi Văn B', '[1]', '[4]', '2020-10-14', '2020-11-14', 'Văn Bản 02', 'Ghi Chú Văn Bản 02'),
-(8, 'Bùi Văn B', '[1]', '[4]', '2020-10-14', '2020-11-14', 'Văn Bản 02', 'Ghi Chú Văn Bản 02'),
-(9, 'Bùi Văn B', '[1]', '[2]', '2020-10-14', '2020-11-14', 'Văn Bản 02', 'Ghi Chú Văn Bản 02'),
-(10, 'rrrrwwww', '[1]', '[2,3]', '2021-02-27', '2021-02-04', 'gggg', 'a1111111');
+INSERT INTO `vanbans` (`id`, `lanhdao`, `chu_tri`, `tham_gia`, `thoigian_nhan`, `thoigian_den`, `hoan_thanh`, `noi_dung`, `ghichu`) VALUES
+(1, 'Bùi Văn A', '[4]', '[1,2]', '2020-10-15', '2021-02-16', NULL, 'Văn Bản 01', 'Ghi Chú Văn Barn 01'),
+(5, 'Bùi Văn B', '[1]', '[4]', '2020-10-14', '2020-11-14', NULL, 'Văn Bản 02', 'Ghi Chú Văn Bản 02'),
+(8, 'Bùi Văn B', '[1]', '[4]', '2020-10-14', '2020-11-14', NULL, 'Văn Bản 02', 'Ghi Chú Văn Bản 02'),
+(9, 'Bùi Văn B', '[1]', '[2]', '2020-10-14', '2020-11-14', NULL, 'Văn Bản 02', 'Ghi Chú Văn Bản 02'),
+(11, 'rrrr', '[1]', '[2,3]', '2021-02-19', '2021-02-06', '2021-02-17', 'gggg', NULL);
 
 -- --------------------------------------------------------
 
@@ -6522,37 +6536,37 @@ ALTER TABLE `bais`
 -- AUTO_INCREMENT cho bảng `chambais`
 --
 ALTER TABLE `chambais`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `congtacs`
 --
 ALTER TABLE `congtacs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `dangs`
 --
 ALTER TABLE `dangs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `daygiois`
 --
 ALTER TABLE `daygiois`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `giangviens`
 --
 ALTER TABLE `giangviens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT cho bảng `hdkh`
 --
 ALTER TABLE `hdkh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `hocphans`
@@ -6570,13 +6584,13 @@ ALTER TABLE `hoctaps`
 -- AUTO_INCREMENT cho bảng `hops`
 --
 ALTER TABLE `hops`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `loai_nckhs`
 --
 ALTER TABLE `loai_nckhs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `lops`
@@ -6588,13 +6602,13 @@ ALTER TABLE `lops`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `nckhs`
 --
 ALTER TABLE `nckhs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT cho bảng `permissions`
@@ -6618,7 +6632,7 @@ ALTER TABLE `tiets`
 -- AUTO_INCREMENT cho bảng `tuans`
 --
 ALTER TABLE `tuans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
@@ -6630,7 +6644,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `vanbans`
 --
 ALTER TABLE `vanbans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `xaydungs`
