@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th2 18, 2021 lúc 11:00 AM
+-- Thời gian đã tạo: Th2 18, 2021 lúc 01:50 PM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.4.11
 
@@ -1901,7 +1901,7 @@ CREATE TABLE `role_user` (
 --
 
 INSERT INTO `role_user` (`role_id`, `user_id`, `user_type`) VALUES
-(2, 1, 'App\\User'),
+(1, 1, 'App\\User'),
 (2, 5, 'App\\User'),
 (1, 6, 'App\\User'),
 (3, 7, 'App\\User'),
