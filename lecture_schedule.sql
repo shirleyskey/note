@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th2 22, 2021 lúc 02:13 PM
+-- Thời gian đã tạo: Th2 25, 2021 lúc 03:33 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.4.11
 
@@ -1063,13 +1063,13 @@ CREATE TABLE `giangviens` (
 --
 
 INSERT INTO `giangviens` (`id`, `ten`, `congviec`, `capbac`, `ma_giangvien`, `bai_giang`, `diachi`, `chucdanh`, `trinhdo`, `cothegiang`) VALUES
-(1, 'Trần Tuấn Tú', 'Trưởng Khoaa', '5', 'MS01', 'TS, Bắt', 'Q.Hà Đông, Hà Nội', 'GVC', 'TS', 1),
-(2, 'Lê Thái Sơn', 'Phó Khoa', '3', 'MS02', 'NULL', 'Hà Nội', 'GVC', 'TS', 1),
+(1, 'Trần Tuấn Tú', 'Trưởng Khoa', 'iiii', 'MS01', 'TS, Bắt', 'Q.Hà Đông, Hà Nội', 'GVC', 'TS', 1),
+(2, 'Lê Thái Sơn', 'Phó Khoa', '3', 'MS02', 'NULLBGdđ', 'Hà Nội', 'GVC', 'TS', 1),
 (3, 'Lê Lương Sơn', 'NULL', '0', 'MS03', 'NULL', 'NULL', 'GVC', 'TS\r\n', 1),
-(4, 'Trần Đức Thuận', 'NULL', '0', 'MS04', 'NULL', 'NULL', 'GVC', 'TS', 1),
+(4, 'Trần Đức Thuận', 'Công việc a', '0', 'MS04', 'Bài Giảng aBCDEF', 'Chỗ ở a', 'GVC', 'TS', 1),
 (5, 'Trần Văn Tuyền', 'NULL', '0', 'MS05', 'NULL', 'NULL', 'GVC', 'TS', 1),
 (6, 'Hoàng Tuấn Anh', 'NULL', '0', 'MS06', 'NULL', 'NULL', 'GVC', 'TS', 1),
-(7, 'Trần Thư Anh', 'NULL', '0', 'MS07', 'NULL', 'NULL', 'GVC', 'TS', 1),
+(7, 'Trần Thư Anh', 'CVab', '0', 'MS07', 'BaGab', 'Chỗ ở ab', 'GVC', 'TS', 1),
 (8, 'Lê Thị Thùy Linh', 'NULL', '0', 'MS08', 'NULL', 'NULL', 'GVC', 'ThS', 1),
 (9, 'Nguyễn Thiên Quyền ', 'NULL', '0', 'MS09', 'NULL', 'NULL', 'GV', 'ThS', 1),
 (10, 'Vương Thăng Long', 'NULL', '0', 'MS10', 'NULL', 'NULL', 'GV', 'TS', 1),
@@ -1439,11 +1439,11 @@ INSERT INTO `loai_nckhs` (`id`, `ten`) VALUES
 (10, 'Tài Liệu - Sách tham khảo cấp Khoa '),
 (11, 'Tài liệu - Sách hướng dẫn học tập '),
 (12, 'Tài liệu - Bài tập tình huống '),
-(13, 'Bài báo '),
-(14, 'Tham Luận '),
-(15, 'Sáng Kiến'),
-(16, 'Cải Tiến\r\n'),
-(17, 'Tài Liệu - Đề Cương Học Phần');
+(13, 'Tài Liệu - Đề Cương Học Phần'),
+(14, 'Bài Báo '),
+(15, 'Tham Luận '),
+(16, 'Sáng Kiến '),
+(17, 'Cải Tiến ');
 
 -- --------------------------------------------------------
 
@@ -1597,7 +1597,7 @@ CREATE TABLE `nckhs` (
 --
 
 INSERT INTO `nckhs` (`id`, `ten`, `capbo`, `thamkhao`, `sangkien`, `bao`, `theloai`, `chubien`, `thamgia`, `batdau`, `ketthuc`, `hoan_thanh`, `sotrang`, `songuoi`) VALUES
-(34, 'A', 1, 0, 0, 0, 3, '[2]', '[6,7]', '2021-01-06', '2021-01-27', NULL, 22, 3),
+(34, 'A', 0, 1, 0, 0, 3, '[2]', '[6,7]', '2021-01-06', '2021-01-27', NULL, 22, 3),
 (35, 'BBbbbb', 0, 1, 0, 0, 5, '[1]', '[7,6,2]', '2021-01-08', '2021-01-30', NULL, 33, 4),
 (36, 'cccc', 0, 0, 0, 1, 13, '[2]', '[1,3,4]', '2021-01-14', '2021-01-30', NULL, 44, 4),
 (38, 'cccc', 0, 0, 1, 0, 16, '[1]', '[2]', '2021-01-12', '2021-01-23', NULL, 3, 2),
@@ -6331,9 +6331,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `id_giangvien`, `email`, `password`, `active`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 1, 'superadministrator@app.com', '$2y$10$wh0D5uyw75PDRLYENJyuUe2yv.55fazWKHL6p5D7A39.d70uQxafe', 1, NULL, '2020-09-02 22:39:18', '2020-09-02 22:39:18'),
-(5, 2, 'lethaison@gmail.com', '$2y$10$Zfk0Q7gH/GZwR2iq.uqJI.z1KJQ6W/ryZL3WAriGtdV7N7UMdO8eC', 1, NULL, '2020-10-14 04:35:25', '2021-01-09 21:52:19'),
+(5, 2, 'lethaison@gmail.com', '$2y$10$ywHzY1t460WUQjnZ1l0R.ee/vN3WVhLZVV7ZMCWGQJIRTnxSp6sQu', 1, NULL, '2020-10-14 04:35:25', '2021-02-24 19:20:50'),
 (6, 3, 'leluongson@gmail.com', '$2y$10$ODz9mlqY7z7sXxIiyjPRBeBsmALLxeNMy20HwpcP2gzjrajaorZ9W', 1, NULL, '2020-10-14 04:36:19', '2021-01-09 21:52:45'),
-(7, 4, 'ducthuantran@gmail.com', '$2y$10$pSOl8E2baoihijTwfi.7puRhxmkWur1lDab773VGhzIQhNxCKCbR.', 1, NULL, '2020-10-14 04:37:03', '2021-01-09 21:52:56'),
+(7, 4, 'ducthuantran@gmail.com', '$2y$10$ODz9mlqY7z7sXxIiyjPRBeBsmALLxeNMy20HwpcP2gzjrajaorZ9W', 1, NULL, '2020-10-14 04:37:03', '2021-02-24 18:09:01'),
 (11, 8, 'lethithuylinh@gmail.com', '$2y$10$Pk0TxvTVIGRMUcYeiXfHWu254/zpa/Es4QaXr1kpY90jXq61KGT8a', 1, NULL, '2020-11-12 09:43:35', '2021-01-09 21:53:16'),
 (12, 10, 'vuongthanglong@gmail.com', '$2y$10$zZiadfXkZUwpHKApbQ21Du0qJ3lWoiSrbW/SVPv7VerHnnXqrQNIW', 1, NULL, '2020-11-12 10:14:57', '2021-01-09 21:53:38');
 
