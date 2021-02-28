@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th2 25, 2021 lúc 03:33 AM
+-- Thời gian đã tạo: Th2 28, 2021 lúc 03:14 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.4.11
 
@@ -923,7 +923,11 @@ INSERT INTO `bais` (`id`, `id_hocphan`, `tenbai`) VALUES
 (1386, 201, 'ĐTVA MA TUÝ'),
 (1387, 201, 'ĐTVA CNTT'),
 (1388, 201, 'ĐTVA TTXH'),
-(1389, 201, 'ĐTVA MÔI TRƯỜNG');
+(1389, 201, 'ĐTVA MÔI TRƯỜNG'),
+(1404, 358, 'HC'),
+(1405, 358, 'ĐC'),
+(1406, 358, 'ND'),
+(1407, 358, 'TN');
 
 -- --------------------------------------------------------
 
@@ -952,7 +956,7 @@ CREATE TABLE `chambais` (
 --
 
 INSERT INTO `chambais` (`id`, `id_giangvien`, `lop`, `hoc_phan`, `giua_hoc_phan`, `cdtn`, `so_bai`, `gio_giang`, `gio_khoahoc`, `bat_dau`, `ket_thuc`, `hoan_thanh`, `ghichu`) VALUES
-(18, 1, 'dđ', 0, 0, 1, NULL, 3, 5, '2021-02-17', '2021-02-16', NULL, 'aaa111'),
+(18, 1, 'dđ', 0, 0, 1, 4, 3, 5, '2021-02-17', '2021-02-16', NULL, 'aaa111'),
 (20, 5, 'dđ', 1, 0, 0, 4, 4, 0, '2021-02-27', '2021-02-06', '2021-02-18', NULL),
 (21, 11, 'dđ', 0, 1, 0, 6, 4, 6, '2021-02-06', '2021-02-13', '2021-02-20', NULL),
 (22, 2, 'dđ', 1, 0, 0, NULL, 2, 1, '2021-02-05', '2021-02-26', NULL, NULL);
@@ -1055,49 +1059,50 @@ CREATE TABLE `giangviens` (
   `diachi` varchar(500) DEFAULT NULL,
   `chucdanh` varchar(500) DEFAULT NULL,
   `trinhdo` varchar(500) DEFAULT NULL,
-  `cothegiang` int(11) NOT NULL
+  `cothegiang` int(11) NOT NULL,
+  `khenthuong` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `giangviens`
 --
 
-INSERT INTO `giangviens` (`id`, `ten`, `congviec`, `capbac`, `ma_giangvien`, `bai_giang`, `diachi`, `chucdanh`, `trinhdo`, `cothegiang`) VALUES
-(1, 'Trần Tuấn Tú', 'Trưởng Khoa', 'iiii', 'MS01', 'TS, Bắt', 'Q.Hà Đông, Hà Nội', 'GVC', 'TS', 1),
-(2, 'Lê Thái Sơn', 'Phó Khoa', '3', 'MS02', 'NULLBGdđ', 'Hà Nội', 'GVC', 'TS', 1),
-(3, 'Lê Lương Sơn', 'NULL', '0', 'MS03', 'NULL', 'NULL', 'GVC', 'TS\r\n', 1),
-(4, 'Trần Đức Thuận', 'Công việc a', '0', 'MS04', 'Bài Giảng aBCDEF', 'Chỗ ở a', 'GVC', 'TS', 1),
-(5, 'Trần Văn Tuyền', 'NULL', '0', 'MS05', 'NULL', 'NULL', 'GVC', 'TS', 1),
-(6, 'Hoàng Tuấn Anh', 'NULL', '0', 'MS06', 'NULL', 'NULL', 'GVC', 'TS', 1),
-(7, 'Trần Thư Anh', 'CVab', '0', 'MS07', 'BaGab', 'Chỗ ở ab', 'GVC', 'TS', 1),
-(8, 'Lê Thị Thùy Linh', 'NULL', '0', 'MS08', 'NULL', 'NULL', 'GVC', 'ThS', 1),
-(9, 'Nguyễn Thiên Quyền ', 'NULL', '0', 'MS09', 'NULL', 'NULL', 'GV', 'ThS', 1),
-(10, 'Vương Thăng Long', 'NULL', '0', 'MS10', 'NULL', 'NULL', 'GV', 'TS', 1),
-(11, 'Vũ Hữu Huân ', NULL, NULL, 'MS11', NULL, NULL, 'GVC', 'TS', 1),
-(12, 'Nguyễn Trọng Hưng', NULL, NULL, 'MS12', NULL, NULL, 'GV', 'ThS', 1),
-(13, 'Nguyễn Kim Long', NULL, NULL, 'MS13', NULL, NULL, 'GV', 'ThS', 1),
-(14, 'Nguyễn Ngọc Hoan ', NULL, NULL, 'MS14', NULL, NULL, 'GV', 'ThS', 1),
-(15, 'Trần Văn Cường', NULL, NULL, 'MS15', NULL, NULL, 'GV', 'ThS', 1),
-(16, 'Sái Ngọc Hưng', NULL, NULL, 'MS16', NULL, NULL, 'GV', 'ThS', 1),
-(17, 'Nguyễn Thế Cường', NULL, NULL, 'MS17', NULL, NULL, 'GV', 'ThS', 1),
-(18, 'Đỗ Ngọc Tân ', NULL, NULL, 'MS18', NULL, NULL, 'GV', 'ThS', 1),
-(19, 'Lê Thị Quỳnh ', NULL, NULL, 'MS19', NULL, NULL, 'GV', 'ThS', 1),
-(20, 'Phạm Thị Huyền Trang ', NULL, NULL, 'MS20 ', NULL, NULL, 'TrG', 'CN', 1),
-(21, 'Bùi Sơn Dương ', NULL, NULL, 'MS21', NULL, NULL, 'GV', 'ThS', 1),
-(22, 'Nguyễn Thái Giang ', NULL, NULL, 'MS22', NULL, NULL, 'GV', 'ThS', 1),
-(23, 'Nguyễn Ngọc Thanh ', NULL, NULL, 'MS23', NULL, NULL, 'GV\r\n', 'ThS', 1),
-(24, 'Trần Xuân Bắc', NULL, NULL, 'MS24', NULL, NULL, 'GV', 'ThS', 1),
-(25, 'Nguyễn Văn Tiến ', NULL, NULL, 'MS25', NULL, NULL, 'TrG', 'TS', 1),
-(26, 'Bùi Trung Bun ', NULL, NULL, 'MS26', NULL, NULL, 'GV', 'ThS', 1),
-(27, 'Phạm Văn Phước ', NULL, NULL, 'MS27', NULL, NULL, 'GV', 'ThS', 1),
-(28, 'Tạ Quang Quyết ', NULL, NULL, 'MS28', NULL, NULL, 'GV', 'ThS', 1),
-(29, 'Nguyễn Văn Định ', NULL, NULL, 'MS29', NULL, NULL, 'TrG ', 'ThS', 0),
-(30, 'Lê Bá Tình ', NULL, NULL, 'MS30', NULL, NULL, 'TrG', 'CN', 1),
-(31, 'Nguyễn Văn Toàn', 'Giảng Viên', NULL, 'MS31', NULL, NULL, 'TrG', 'CN', 1),
-(32, 'Chu Quang Thiện ', NULL, NULL, 'MS32', NULL, NULL, 'GV', 'TS', 1),
-(33, 'Nguyễn Thị Lan Hồng ', NULL, NULL, 'MS33', NULL, NULL, 'GVC', 'TS', 1),
-(34, 'Nguyễn Quang Chiến ', NULL, NULL, 'MS34', NULL, NULL, 'GVC', 'TS', 1),
-(35, 'Phan Bá Toản ', NULL, NULL, 'MS35', NULL, NULL, 'GVC', 'PGS.TS', 1);
+INSERT INTO `giangviens` (`id`, `ten`, `congviec`, `capbac`, `ma_giangvien`, `bai_giang`, `diachi`, `chucdanh`, `trinhdo`, `cothegiang`, `khenthuong`) VALUES
+(1, 'Trần Tuấn Tú', 'Trưởng Khoa', 'iiii', 'MS01', 'TS, Bắt, GG', 'Q.Hà Đông, Hà Nội', 'GVC', 'TS', 1, 'Khen thưởng 1, khen thưởng 2eee'),
+(2, 'Lê Thái Sơn', 'Phó Khoa', '3', 'MS02', 'NULLBGdđ', 'Hà Nội', 'GVC', 'TS', 1, NULL),
+(3, 'Lê Lương Sơn', 'NULL', '0', 'MS03', 'NULL', 'NULL', 'GVC', 'TS\r\n', 1, NULL),
+(4, 'Trần Đức Thuận', 'Công việc a', '0', 'MS04', 'Bài Giảng aBCDEF', 'Chỗ ở a', 'GVC', 'TS', 1, NULL),
+(5, 'Trần Văn Tuyền', 'NULL', '0', 'MS05', 'NULL', 'NULL', 'GVC', 'TS', 1, NULL),
+(6, 'Hoàng Tuấn Anh', 'NULL', '0', 'MS06', 'NULL', 'NULL', 'GVC', 'TS', 1, NULL),
+(7, 'Trần Thư Anh', 'CVab', '0', 'MS07', 'BaGab', 'Chỗ ở ab', 'GVC', 'TS', 1, NULL),
+(8, 'Lê Thị Thùy Linh', 'NULL', '0', 'MS08', 'NULL', 'NULL', 'GVC', 'ThS', 1, NULL),
+(9, 'Nguyễn Thiên Quyền ', 'NULL', '0', 'MS09', 'NULL', 'NULL', 'GV', 'ThS', 1, NULL),
+(10, 'Vương Thăng Long', 'NULL', '0', 'MS10', 'NULL', 'NULL', 'GV', 'TS', 1, NULL),
+(11, 'Vũ Hữu Huân ', NULL, NULL, 'MS11', NULL, NULL, 'GVC', 'TS', 1, NULL),
+(12, 'Nguyễn Trọng Hưng', NULL, NULL, 'MS12', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(13, 'Nguyễn Kim Long', NULL, NULL, 'MS13', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(14, 'Nguyễn Ngọc Hoan ', NULL, NULL, 'MS14', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(15, 'Trần Văn Cường', NULL, NULL, 'MS15', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(16, 'Sái Ngọc Hưng', NULL, NULL, 'MS16', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(17, 'Nguyễn Thế Cường', NULL, NULL, 'MS17', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(18, 'Đỗ Ngọc Tân ', NULL, NULL, 'MS18', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(19, 'Lê Thị Quỳnh ', NULL, NULL, 'MS19', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(20, 'Phạm Thị Huyền Trang ', NULL, NULL, 'MS20 ', NULL, NULL, 'TrG', 'CN', 1, NULL),
+(21, 'Bùi Sơn Dương ', NULL, NULL, 'MS21', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(22, 'Nguyễn Thái Giang ', NULL, NULL, 'MS22', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(23, 'Nguyễn Ngọc Thanh ', NULL, NULL, 'MS23', NULL, NULL, 'GV\r\n', 'ThS', 1, NULL),
+(24, 'Trần Xuân Bắc', NULL, NULL, 'MS24', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(25, 'Nguyễn Văn Tiến ', NULL, NULL, 'MS25', NULL, NULL, 'TrG', 'TS', 1, NULL),
+(26, 'Bùi Trung Bun ', NULL, NULL, 'MS26', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(27, 'Phạm Văn Phước ', NULL, NULL, 'MS27', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(28, 'Tạ Quang Quyết ', NULL, NULL, 'MS28', NULL, NULL, 'GV', 'ThS', 1, NULL),
+(29, 'Nguyễn Văn Định ', NULL, NULL, 'MS29', NULL, NULL, 'TrG ', 'ThS', 0, NULL),
+(30, 'Lê Bá Tình ', NULL, NULL, 'MS30', NULL, NULL, 'TrG', 'CN', 1, NULL),
+(31, 'Nguyễn Văn Toàn', 'Giảng Viên', NULL, 'MS31', NULL, NULL, 'TrG', 'CN', 1, NULL),
+(32, 'Chu Quang Thiện ', NULL, NULL, 'MS32', NULL, NULL, 'GV', 'TS', 1, NULL),
+(33, 'Nguyễn Thị Lan Hồng ', NULL, NULL, 'MS33', NULL, NULL, 'GVC', 'TS', 1, NULL),
+(34, 'Nguyễn Quang Chiến ', NULL, NULL, 'MS34', NULL, NULL, 'GVC', 'TS', 1, NULL),
+(35, 'Phan Bá Toản ', NULL, NULL, 'MS35', NULL, NULL, 'GVC', 'PGS.TS', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -1354,7 +1359,8 @@ INSERT INTO `hocphans` (`id`, `id_lop`, `mahocphan`, `sotinchi`, `tenhocphan`) V
 (342, 213, 'LT8A VLVH PPĐT1', 0, 'Học Phần Phương Pháp Điều Tra 1'),
 (343, 214, 'LT8B VLVH ĐTHS1', 0, 'Học Phần Điều Tra Hình Sự 1'),
 (344, 214, 'LT8B VLVH ĐTHS2', 0, 'Học Phần Điều Tra Hình Sự 2'),
-(345, 214, 'LT8B VLVH PPĐT1', 0, 'Học Phần Phương Pháp Điều Tra 1');
+(345, 214, 'LT8B VLVH PPĐT1', 0, 'Học Phần Phương Pháp Điều Tra 1'),
+(358, 139, '31LAO ĐT ĐTHS3 TEST', 42, '31LAO ĐT ĐTHS3 Test');
 
 -- --------------------------------------------------------
 
@@ -1583,8 +1589,8 @@ CREATE TABLE `nckhs` (
   `sangkien` tinyint(1) NOT NULL,
   `bao` tinyint(1) NOT NULL,
   `theloai` int(11) NOT NULL,
-  `chubien` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `thamgia` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `chubien` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `thamgia` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `batdau` date NOT NULL,
   `ketthuc` date NOT NULL,
   `hoan_thanh` date DEFAULT NULL,
@@ -1597,13 +1603,18 @@ CREATE TABLE `nckhs` (
 --
 
 INSERT INTO `nckhs` (`id`, `ten`, `capbo`, `thamkhao`, `sangkien`, `bao`, `theloai`, `chubien`, `thamgia`, `batdau`, `ketthuc`, `hoan_thanh`, `sotrang`, `songuoi`) VALUES
-(34, 'A', 0, 1, 0, 0, 3, '[2]', '[6,7]', '2021-01-06', '2021-01-27', NULL, 22, 3),
+(34, 'AAAAAAAA', 1, 0, 0, 0, 3, '[0]', '[0]', '2021-01-06', '2021-01-27', NULL, 22, 3),
 (35, 'BBbbbb', 0, 1, 0, 0, 5, '[1]', '[7,6,2]', '2021-01-08', '2021-01-30', NULL, 33, 4),
-(36, 'cccc', 0, 0, 0, 1, 13, '[2]', '[1,3,4]', '2021-01-14', '2021-01-30', NULL, 44, 4),
+(36, 'cccc', 0, 0, 0, 1, 14, '[2]', '[1,3,4]', '2021-01-14', '2021-01-30', NULL, 44, 4),
 (38, 'cccc', 0, 0, 1, 0, 16, '[1]', '[2]', '2021-01-12', '2021-01-23', NULL, 3, 2),
-(39, 'Bùi Văn C', 1, 0, 0, 0, 4, '[1,2]', '[3,4]', '2021-02-12', '2021-02-13', NULL, 2, 4),
-(40, 'Công tác Mưrrr', 1, 0, 0, 0, 1, '[1]', '[3,4]', '2021-02-04', '2021-02-12', NULL, 2, 3),
-(41, 'Công tác Mư', 0, 1, 0, 0, 4, '[1]', '[2,3]', '2021-02-03', '2021-02-27', NULL, 2, 3);
+(39, 'NCKH1', 0, 1, 0, 0, 13, '[1,2]', '[3,4]', '2021-02-12', '2021-02-13', NULL, 2, 4),
+(40, 'Công tác Mưrrr', 1, 0, 0, 0, 1, '[0]', '[0]', '2021-02-04', '2021-02-12', NULL, 2, 3),
+(41, 'Công tác Mư', 0, 1, 0, 0, 4, '[1]', '[2,3]', '2021-02-03', '2021-02-27', NULL, 2, 3),
+(45, 'Test null', 1, 0, 0, 0, 2, '[0]', '[0]', '2021-02-04', '2021-02-20', '2021-02-27', 4, 5),
+(46, 'Test NUll', 1, 0, 0, 0, 2, '[0]', '[0]', '2021-02-03', '2021-02-12', NULL, 3, 2),
+(47, '@@@@', 1, 0, 0, 0, 1, '[1]', '[2,3]', '2021-02-12', '2021-02-13', NULL, 2, 0),
+(48, 'AAAAAAAAAAAA', 1, 0, 0, 0, 2, '[0]', '[0]', '2021-02-01', '2021-02-10', NULL, 2, 0),
+(49, 'BBBBBBBBBBBBBB', 1, 0, 0, 0, 3, '[0]', '[0]', '2021-02-03', '2021-02-13', NULL, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -6273,7 +6284,38 @@ INSERT INTO `tiets` (`id`, `id_lop`, `id_hocphan`, `id_giangvien`, `id_bai`, `th
 (5073, 158, 201, NULL, 1367, '2020-12-24 00:00:00', 'S', 0, '1/1', 4),
 (5074, 158, 201, 6, 1388, '2020-12-24 00:00:00', 'C', 0, '1/2', 4),
 (5075, 158, 201, 6, 1388, '2020-12-25 00:00:00', 'S', 0, '2/2', 4),
-(5076, 158, 201, 6, 1389, '2020-12-25 00:00:00', 'C', 0, '1/1', 4);
+(5076, 158, 201, 6, 1389, '2020-12-25 00:00:00', 'C', 0, '1/1', 4),
+(5107, 139, 358, 13, 1404, '2020-07-30 00:00:00', 'S', 1, '1/12', 2),
+(5108, 139, 358, 13, 1404, '2020-07-30 00:00:00', 'S', 2, '2/12', 2),
+(5109, 139, 358, 13, 1404, '2020-08-03 00:00:00', 'S', 1, '3/12', 2),
+(5110, 139, 358, 13, 1404, '2020-08-04 00:00:00', 'S', 1, '4/12', 2),
+(5111, 139, 358, 13, 1404, '2020-08-04 00:00:00', 'S', 2, '5/12', 2),
+(5112, 139, 358, 13, 1404, '2020-08-06 00:00:00', 'S', 1, '6/12', 2),
+(5113, 139, 358, 13, 1404, '2020-08-06 00:00:00', 'S', 2, '7/12', 2),
+(5114, 139, 358, 13, 1404, '2020-08-10 00:00:00', 'S', 1, '8/12', 2),
+(5115, 139, 358, 13, 1404, '2020-08-11 00:00:00', 'S', 1, '9/12', 2),
+(5116, 139, 358, 13, 1404, '2020-08-11 00:00:00', 'S', 2, '10/12', 2),
+(5117, 139, 358, 13, 1404, '2020-08-13 00:00:00', 'S', 1, '11/12', 2),
+(5118, 139, 358, 13, 1404, '2020-08-13 00:00:00', 'S', 2, '12/12', 2),
+(5119, 139, 358, 13, 1405, '2020-08-17 00:00:00', 'S', 1, '1/6', 2),
+(5120, 139, 358, 13, 1405, '2020-08-18 00:00:00', 'S', 1, '2/6', 2),
+(5121, 139, 358, 13, 1405, '2020-08-18 00:00:00', 'S', 2, '3/6', 2),
+(5122, 139, 358, 13, 1405, '2020-08-20 00:00:00', 'S', 1, '4/6', 2),
+(5123, 139, 358, 13, 1405, '2020-08-20 00:00:00', 'S', 2, '5/6', 2),
+(5124, 139, 358, 13, 1405, '2020-08-24 00:00:00', 'S', 1, '6/6', 2),
+(5125, 139, 358, 21, 1406, '2020-08-25 00:00:00', 'S', 1, '1/6', 2),
+(5126, 139, 358, 21, 1406, '2020-08-25 00:00:00', 'S', 2, '2/6', 2),
+(5127, 139, 358, 21, 1406, '2020-08-27 00:00:00', 'S', 1, '3/6', 2),
+(5128, 139, 358, 21, 1406, '2020-08-27 00:00:00', 'S', 2, '4/6', 2),
+(5129, 139, 358, 21, 1406, '2020-08-31 00:00:00', 'S', 1, '5/6', 2),
+(5130, 139, 358, 21, 1406, '2020-09-01 00:00:00', 'S', 1, '6/6', 2),
+(5131, 139, 358, 10, 1407, '2020-09-01 00:00:00', 'S', 2, '1/7', 2),
+(5132, 139, 358, 10, 1407, '2020-09-03 00:00:00', 'S', 1, '2/7', 2),
+(5133, 139, 358, 10, 1407, '2020-09-03 00:00:00', 'S', 2, '3/7', 2),
+(5134, 139, 358, 10, 1407, '2020-09-07 00:00:00', 'S', 1, '4/7', 2),
+(5135, 139, 358, 10, 1407, '2020-09-08 00:00:00', 'S', 1, '5/7', 2),
+(5136, 139, 358, 10, 1407, '2020-09-08 00:00:00', 'S', 2, '6/7', 2),
+(5137, 139, 358, 10, 1407, '2020-09-10 00:00:00', 'S', 1, '7/7', 2);
 
 -- --------------------------------------------------------
 
@@ -6301,12 +6343,13 @@ INSERT INTO `tuans` (`id`, `thoi_gian`, `dia_diem`, `noi_dung`, `thanh_phan`, `t
 (3, '2021-02-17 12:47:00', 'Nhà 6u', 'Họp Dy', 'ABCDD', 1, 0, 'FGGGFF'),
 (4, '2021-02-16 12:47:00', 'Nhà 6', 'Họp D', 'ABCDD', 1, 0, 'FGGGFF'),
 (5, '2021-02-18 12:47:49', 'Nhà 6', 'Họp D', 'ABCDD', 1, 0, 'FGGGFF'),
-(6, '2021-01-29 12:47:49', 'Nhà 6', 'Họp D', 'ABCDD', 1, 0, 'FGGGFF'),
+(6, '2021-01-29 02:48:00', 'Nhà 6', 'Họp D', 'ABCDD', 1, NULL, 'FGGGFF'),
 (7, '2021-02-15 14:30:24', 'Nhà 6', 'Họp D', 'ABCDD', 1, 0, 'FGGGFF'),
 (8, '2021-02-01 13:35:23', 'Nhà 6', 'Họp D', 'ABCDD', 1, 0, 'FGGGFF'),
 (12, '2021-02-19 04:58:00', 'Nhà 7', 'ggggeeee', 'aaannnnnnnnnnnnnnn', 2, 19, NULL),
 (13, '2021-02-04 03:08:00', NULL, NULL, NULL, NULL, NULL, NULL),
-(14, '2021-02-23 03:09:00', NULL, NULL, NULL, 2, 17, NULL);
+(14, '2021-02-23 18:09:00', NULL, NULL, NULL, 2, 18, NULL),
+(15, '2021-02-23 18:00:00', NULL, NULL, NULL, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6558,7 +6601,7 @@ ALTER TABLE `xaydungs`
 -- AUTO_INCREMENT cho bảng `bais`
 --
 ALTER TABLE `bais`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1404;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1408;
 
 --
 -- AUTO_INCREMENT cho bảng `chambais`
@@ -6600,7 +6643,7 @@ ALTER TABLE `hdkh`
 -- AUTO_INCREMENT cho bảng `hocphans`
 --
 ALTER TABLE `hocphans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=358;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=359;
 
 --
 -- AUTO_INCREMENT cho bảng `hoctaps`
@@ -6636,7 +6679,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `nckhs`
 --
 ALTER TABLE `nckhs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT cho bảng `permissions`
@@ -6654,13 +6697,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT cho bảng `tiets`
 --
 ALTER TABLE `tiets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5107;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5138;
 
 --
 -- AUTO_INCREMENT cho bảng `tuans`
 --
 ALTER TABLE `tuans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
